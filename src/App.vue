@@ -19,7 +19,6 @@
 
 <script>
 import Memo from './Memo.vue'
-
 let memosRef = new Firebase('https://dashboard-9257e.firebaseio.com/memos/')
 
 export default {
