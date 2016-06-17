@@ -1,5 +1,4 @@
 import Vue from 'vue'
-import Memo from './Memo.vue'
 import App from './App.vue'
 
 import VueFire from 'vuefire'
