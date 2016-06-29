@@ -18,22 +18,28 @@
 </template>
 
 <script>
-let memosRef = new Firebase('https://dashboard-9257e.firebaseio.com/memos/')
+import firebase from "firebase"
+import config from './config'
+
+firebase.initializeApp(config.firebase)
+
+let db = new firebase.database()
+let memosRef = db.ref('memos')
 
 export default {
   firebase: {
     memos: memosRef.limitToLast(25)
   },
+  created() {
+  },
   data () {
     return {
       date: "2016-06-11",
-      text: "new memo",
-      msg: 'Hello Vue!'
+      text: "new memo"
     }
   },
   methods: {
     deleteMemo(memo) {
-      console.log(memo['.key'])
       memosRef.child(memo['.key']).remove()
     },
     addMemo(e) {
