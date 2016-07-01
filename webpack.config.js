@@ -7,8 +7,8 @@ module.exports = {
   },
 
   output: {
-    path: path.join(__dirname, 'build'),
-    filename: 'dist/bundle.js'
+    path: path.join(__dirname, 'public/dist'),
+    filename: 'bundle.js'
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),
