@@ -1,10 +1,17 @@
 <template>
+
   <div id="app">
+
     <h1>メガ看板</h1>
-    <memo v-for="memo in memos" :memo="memo" :ref="childRef(memo)">
-    </memo>
+
+    <section v-for="section in sections"><h2>{{section}}</h2></section>
+
+    <memo v-for="memo in memos" :memo="memo" :ref="childRef(memo)"></memo>
+
     <div v-on:click="addMemo" class="bigplus">⊕</div>
+
   </div>
+
 </template>
 
 <script>
@@ -27,13 +34,14 @@ export default {
     memo
   },
 
-  data () {
+  data() {
     return {
-      text: "new memo"
+      sections: ['TODO', 'DOING', 'DONE']
     }
   },
 
   methods: {
+
     childRef(memo) {
       return memosRef.child(memo['.key'])
     },
@@ -52,15 +60,18 @@ export default {
 
     addMemo(e) {
       e.preventDefault()
+
       memosRef.push({
         text: '',
         position: {
-          left: 100 + 50 * Math.random(),
-          top: 100 + 50 * Math.random()
+          left: 50 + 50 * Math.random(),
+          top: 100 * 100 * Math.random()
         },
+        rotate: 0,
         color: '#eee'
       })
     }
+
   }
 }
 </script>
@@ -77,7 +88,7 @@ export default {
 .bigplus {
   font-size: 100px;
   position: absolute;
-  right: 15px;
+  left: 15px;
   top: 15px;
   width: 70px;
   height: 70px;
@@ -87,18 +98,31 @@ export default {
   transition: opacity 0.5s;
   cursor: pointer;
 }
+
+.bigplus:hover {
+  opacity: 0.5;
+}
+
+
 h1 {
   opacity: 0.1;
   color: black;
   position: absolute;
   left: 10px;
-  top: 0px;
+  bottom: 0px;
   font-size: 60px;
   line-height: 20px;
 }
-.bigplus:hover {
-  opacity: 0.5;
+
+section {
+  width: 33%;
+  height: 100%;
+  float: left;
+  text-align: center;
+  border-right: 3px dotted black;
+  opacity: 0.1;
 }
+
 body{
   font-family: Helvetica, sans-serif;
 }
