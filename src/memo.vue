@@ -4,12 +4,11 @@
   <div
       class="memo"
       v-bind:class="{ dragging: dragging}"
-      v-bind:style="position"
+      v-bind:style="memoStyle"
       v-on:mousedown="mouseDown"
       v-on:mouseup="mouseUp"
       v-on:mouseleave="mouseUp"
       v-on:mousemove="mouseMove">
-
     <textarea
       v-on:blur="updateText"
       v-model="memo.text"></textarea>
@@ -17,13 +16,16 @@
 
     <div class="colors">
       <label
+        class="color"
         v-for="color in colors"
-        v-bind:style="{'background-color': color}"><input
+        v-bind:style="{'color': color}">
+        <input
           type="radio"
           name="color"
           v-model="memo.color"
           :value="color"
-          ></label>
+          >
+      </label>
     </div>
 
     <a class="delete-button" v-on:click="deleteMemo" href="#">×</a>
@@ -46,29 +48,25 @@ export default {
 
   watch: {
     'memo.color'() {
-      this.ref.update({
-        color: this.memo.color
-      })
+      this.ref.update({color: this.memo.color})
     }
   },
 
   computed: {
-    position() {
-      return this.memo.position ?
-        {
-          left: this.memo.position.left + 'px',
-          top: this.memo.position.top + 'px',
-          backgroundColor: this.memo.color,
-        } : {left: '10px', top: '10px' }
+    memoStyle() {
+      return {
+        backgroundColor: this.memo.color,
+        transform: 'rotate(' + (this.memo.rotate || 0) + 'deg)',
+        left: (this.memo.position.left||0) + 'px',
+        top: (this.memo.position.top||0) + 'px'
+      }
     }
   },
 
   methods: {
 
     updateText() {
-      this.ref.update({
-        text: this.memo.text
-      })
+      this.ref.update({text: this.memo.text})
     },
 
     deleteMemo(e) {
@@ -139,46 +137,65 @@ export default {
 
 .memo .delete-button {
   text-decoration: none;
-  display: none;
   position: absolute;
-  right: 8px;
-  top: 8px;
+  right: 10px;
+  top: 10px;
+  font-weight: bold;
   border: none;
   background: none;
   opacity: 0.5;
-  color: black;
-  border: 1px solid black;
-  border-radius: 50%;
+  color: rgba(0,0,0,0.5);
   width: 15px;
   height: 15px;
   text-align: center;
   line-height: 15px;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
 
 textarea:focus, input:focus{
   outline: none;
 }
 
-.memo:hover .delete-button, .memo:hover .colors{
-  display: block;
+.memo:hover .delete-button {
+  opacity: 0.5;
 }
 
 .colors {
   position: absolute;
   bottom: 5px;
   right: 5px;
-  display: none;
   transform: rotate(90deg);
   transform-origin: 90% 50%;
 }
 
-.colors label {
+.colors .color {
+  display: inline-block;
   text-align: center;
-  border: 1px solid white;
-  border-radius: 50%;
+  border: 5px solid currentColor;
+  border-radius: 50% 50%;
   position: relative;
+  width: 5px;
+  height: 5px;
+  margin: 2px;
+  overflow: hidden;
+  transition: opacity 0.5s;
+  opacity: 0;
 }
-.colors input {
-  visibility: hidden;
+
+.colors:hover .color {
+  opacity: 1;
 }
+
+.colors .color:hover{
+  opacity: 1;
+}
+
+.color input {
+  position: absolute;
+  left: 10px;
+  line-height: 10px;
+  opacity: 0.5;
+}
+
 </style>
