@@ -1,26 +1,35 @@
 
 <template>
+
   <div
       class="memo"
       v-bind:class="{ dragging: dragging}"
       v-bind:style="position"
       v-on:mousedown="mouseDown"
       v-on:mouseup="mouseUp"
-      v-on:mouseexit="mouseUp"
+      v-on:mouseleave="mouseUp"
       v-on:mousemove="mouseMove">
+
     <textarea
       v-on:blur="updateText"
       v-model="memo.text"></textarea>
-    <a class="delete-button" v-on:click="deleteMemo" href="#">x</a>
+
+
     <div class="colors">
-      <input type="radio" name="color" v-model="memo.color" value="#ffee99">
-      <input type="radio" name="color" v-model="memo.color" value="#ff99ee">
-      <input type="radio" name="color" v-model="memo.color" value="#ee99ff">
-      <input type="radio" name="color" v-model="memo.color" value="#99eeff">
-      <input type="radio" name="color" v-model="memo.color" value="#99ffee">
-      <input type="radio" name="color" v-model="memo.color" value="#eeff99">
+      <label
+        v-for="color in colors"
+        v-bind:style="{'background-color': color}"><input
+          type="radio"
+          name="color"
+          v-model="memo.color"
+          :value="color"
+          ></label>
     </div>
+
+    <a class="delete-button" v-on:click="deleteMemo" href="#">×</a>
+
   </div>
+
 </template>
 
 
@@ -30,7 +39,8 @@ export default {
 
   data() {
     return {
-      dragging: false
+      dragging: false,
+      colors: ['#fce', '#fec', '#efc', '#cfe', '#cef', '#eee']
     }
   },
 
@@ -116,7 +126,7 @@ export default {
   cursor: move;
   left: 0;
   top: 0;
-  width: 100%;
+  width: 80%;
   height: 100%;
   text-align: center;
   border: none;
@@ -131,15 +141,22 @@ export default {
   text-decoration: none;
   display: none;
   position: absolute;
-  right: 10px;
-  top: 10px;
+  right: 8px;
+  top: 8px;
   border: none;
   background: none;
   opacity: 0.5;
+  color: black;
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  text-align: center;
+  line-height: 15px;
 }
 
 textarea:focus, input:focus{
-    outline: none;
+  outline: none;
 }
 
 .memo:hover .delete-button, .memo:hover .colors{
@@ -148,8 +165,20 @@ textarea:focus, input:focus{
 
 .colors {
   position: absolute;
-  bottom: 0px;
+  bottom: 5px;
+  right: 5px;
   display: none;
+  transform: rotate(90deg);
+  transform-origin: 90% 50%;
 }
 
+.colors label {
+  text-align: center;
+  border: 1px solid white;
+  border-radius: 50%;
+  position: relative;
+}
+.colors input {
+  visibility: hidden;
+}
 </style>
