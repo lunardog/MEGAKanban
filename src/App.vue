@@ -64,8 +64,8 @@ export default {
       memosRef.push({
         text: '',
         position: {
-          left: 50 + 50 * Math.random(),
-          top: 100 * 100 * Math.random()
+          left: 0.15 * Math.random(),
+          top: 0.9 * Math.random()
         },
         rotate: 0,
         color: '#eee'

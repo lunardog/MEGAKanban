@@ -42,6 +42,10 @@ export default {
   data() {
     return {
       dragging: false,
+      lastPos: {
+        x: 0,
+        y: 0
+      },
       colors: ['#fce', '#fec', '#efc', '#cfe', '#cef', '#eee']
     }
   },
@@ -57,8 +61,8 @@ export default {
       return {
         backgroundColor: this.memo.color,
         transform: 'rotate(' + (this.memo.rotate || 0) + 'deg)',
-        left: (this.memo.position.left||0) + 'px',
-        top: (this.memo.position.top||0) + 'px'
+        left: (100*this.memo.position.left||0) + '%',
+        top: (100*this.memo.position.top||0) + '%'
       }
     }
   },
@@ -83,16 +87,14 @@ export default {
       e.cancelBubble = true
       e.preventDefault()
       if(this.dragging){
-        this.memo.position.left += e.movementX
-        this.memo.position.top += e.movementY
+        this.memo.position.left = (e.pageX) / window.innerWidth
+        this.memo.position.top = (e.pageY) / window.innerHeight
       }
     },
 
     mouseUp(e) {
       e.cancelBubble = true
-      this.ref.update({
-        position: this.memo.position
-      })
+      this.ref.update({position: this.memo.position })
       this.dragging = false
     },
 
@@ -109,7 +111,8 @@ export default {
   display: inline-block;
   width: 200px;
   min-height: 160px;
-  -webkit-transform: translate(-50%, -50%, 0);
+  margin-left: -100px;
+  margin-top: -80px;
   cursor: move;
   position: absolute;
   background-color: #eee;
