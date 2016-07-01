@@ -2,11 +2,13 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './src/main.js',
+  entry: {
+    app: './src/main.js'
+  },
+
   output: {
-    path: path.resolve(__dirname, './public/dist'),
-    publicPath: 'public',
-    filename: 'build.js'
+    path: path.join(__dirname, 'build'),
+    filename: 'dist/bundle.js'
   },
   resolveLoader: {
     root: path.join(__dirname, 'node_modules'),
@@ -41,8 +43,8 @@ module.exports = {
     ]
   },
   devServer: {
-    historyApiFallback: true,
-    noInfo: true
+    historyApiFallback: false,
+    hot: true
   },
   devtool: '#eval-source-map'
 }
