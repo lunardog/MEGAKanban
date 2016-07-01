@@ -7,6 +7,7 @@
       v-bind:style="memoStyle"
       v-on:mousedown="mouseDown"
       v-on:mouseup="mouseUp"
+      v-on:mouseleave="mouseLeave"
       v-on:mouseleave="mouseUp"
       v-on:mousemove="mouseMove">
     <textarea
@@ -36,6 +37,15 @@
 
 
 <script>
+
+function bigRandom() {
+  let rnd = 0
+  for (let i=0; i<5; i++) {
+    rnd += Math.random()*2 - 1
+  }
+  return rnd / 5
+}
+
 export default {
   props: ['memo', 'ref'],
 
@@ -92,10 +102,21 @@ export default {
       }
     },
 
-    mouseUp(e) {
-      e.cancelBubble = true
-      this.ref.update({position: this.memo.position })
+    mouseLeave(e) {
+      if (this.dragging) {
+        this.ref.update({
+          position: this.memo.position,
+          rotate: this.memo.rotate
+        })
+      }
       this.dragging = false
+    },
+
+    mouseUp(e) {
+      if (this.dragging) {
+        this.mouseLeave(e)
+      }
+      e.cancelBubble = true
     },
 
   }
@@ -107,7 +128,7 @@ export default {
 <style>
 .memo {
   box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-  border: 1px solid silver;
+  border-radius: 3px;
   display: inline-block;
   width: 200px;
   min-height: 160px;
@@ -119,7 +140,7 @@ export default {
 }
 
 .memo.dragging {
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+  box-shadow: 6px 6px 20px rgba(0,0,0,0.3);
 }
 
 .memo textarea {

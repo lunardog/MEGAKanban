@@ -24,7 +24,7 @@ firebase.initializeApp(config.firebase)
 let db = new firebase.database()
 let memosRef = db.ref('memos')
 
-function bigRandom() {
+function natural() {
   let rnd = 0
   for (let i=0; i<5; i++) {
     rnd += Math.random()*2 - 1
@@ -75,7 +75,7 @@ export default {
           left: 0.15 * Math.random(),
           top: 0.9 * Math.random()
         },
-        rotate: 15 * bigRandom(),
+        rotate: 10 * natural(),
         color: '#eee'
       })
     }
@@ -91,7 +91,7 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #ccc;
+  background: #808284;
 }
 .bigplus {
   font-size: 100px;
