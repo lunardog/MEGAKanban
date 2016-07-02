@@ -6,9 +6,9 @@
 
     <section v-for="section in sections"><h2>{{section}}</h2></section>
 
-    <memo v-for="memo in memos" :memo="memo" :ref="childRef(memo)"></memo>
+    <sticky v-for="sticky in stickies" :sticky="sticky" :ref="childRef(sticky)"></sticky>
 
-    <div v-on:click="addMemo" class="bigplus">⊕</div>
+    <div v-on:click="addSticky" class="bigplus">⊕</div>
 
   </div>
 
@@ -17,12 +17,12 @@
 <script>
 import firebase from "firebase"
 import config from './config'
-import memo from './sticky.vue'
+import sticky from './sticky.vue'
 
 firebase.initializeApp(config.firebase)
 
 let db = new firebase.database()
-let memosRef = db.ref('memos')
+let stickiesRef = db.ref('stickies')
 
 function natural() {
   let rnd = 0
@@ -35,11 +35,11 @@ function natural() {
 export default {
 
   firebase: {
-    memos: memosRef.orderByKey()
+    stickies: stickiesRef.orderByKey()
   },
 
   components: {
-    memo
+    sticky
   },
 
   data() {
@@ -50,14 +50,14 @@ export default {
 
   methods: {
 
-    childRef(memo) {
-      return memosRef.child(memo['.key'])
+    childRef(sticky) {
+      return stickiesRef.child(sticky['.key'])
     },
 
     onClick(e) {
       console.log('doubleclick')
       console.log(e)
-      memosRef.push({
+      stickiesRef.push({
         text: '',
         position: {
           left: e.clientX,
@@ -66,10 +66,10 @@ export default {
       })
     },
 
-    addMemo(e) {
+    addSticky(e) {
       e.preventDefault()
 
-      memosRef.push({
+      stickiesRef.push({
         text: '',
         position: {
           left: 0.15 * Math.random(),

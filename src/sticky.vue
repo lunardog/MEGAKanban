@@ -2,9 +2,9 @@
 <template>
 
   <div
-      class="memo"
+      class="sticky"
       v-bind:class="{ dragging: dragging}"
-      v-bind:style="memoStyle"
+      v-bind:style="stickyStyle"
       v-on:mousedown="mouseDown"
       v-on:mouseup="mouseUp"
       v-on:mouseleave="mouseLeave"
@@ -12,7 +12,7 @@
       v-on:mousemove="mouseMove">
     <textarea
       v-on:blur="updateText"
-      v-model="memo.text"></textarea>
+      v-model="sticky.text"></textarea>
 
 
     <div class="colors">
@@ -23,13 +23,13 @@
         <input
           type="radio"
           name="color"
-          v-model="memo.color"
+          v-model="sticky.color"
           :value="color"
           >
       </label>
     </div>
 
-    <a class="delete-button" v-on:click="deleteMemo" href="#">×</a>
+    <a class="delete-button" v-on:click="deleteSticky" href="#">×</a>
 
   </div>
 
@@ -47,7 +47,7 @@ function bigRandom() {
 }
 
 export default {
-  props: ['memo', 'ref'],
+  props: ['sticky', 'ref'],
 
   data() {
     return {
@@ -61,18 +61,18 @@ export default {
   },
 
   watch: {
-    'memo.color'() {
-      this.ref.update({color: this.memo.color})
+    'sticky.color'() {
+      this.ref.update({color: this.sticky.color})
     }
   },
 
   computed: {
-    memoStyle() {
+    stickyStyle() {
       return {
-        backgroundColor: this.memo.color,
-        transform: 'rotate(' + (this.memo.rotate || 0) + 'deg)',
-        left: (100*this.memo.position.left||0) + '%',
-        top: (100*this.memo.position.top||0) + '%'
+        backgroundColor: this.sticky.color,
+        transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
+        left: (100*this.sticky.position.left||0) + '%',
+        top: (100*this.sticky.position.top||0) + '%'
       }
     }
   },
@@ -80,10 +80,10 @@ export default {
   methods: {
 
     updateText() {
-      this.ref.update({text: this.memo.text})
+      this.ref.update({text: this.sticky.text})
     },
 
-    deleteMemo(e) {
+    deleteSticky(e) {
       e.preventDefault()
       this.ref.remove()
     },
@@ -97,16 +97,16 @@ export default {
       e.cancelBubble = true
       e.preventDefault()
       if(this.dragging){
-        this.memo.position.left = (e.pageX) / window.innerWidth
-        this.memo.position.top = (e.pageY) / window.innerHeight
+        this.sticky.position.left = (e.pageX) / window.innerWidth
+        this.sticky.position.top = (e.pageY) / window.innerHeight
       }
     },
 
     mouseLeave(e) {
       if (this.dragging) {
         this.ref.update({
-          position: this.memo.position,
-          rotate: this.memo.rotate
+          position: this.sticky.position,
+          rotate: this.sticky.rotate
         })
       }
       this.dragging = false
@@ -126,7 +126,7 @@ export default {
 
 
 <style>
-.memo {
+.sticky {
   box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
   border-radius: 3px;
   display: inline-block;
@@ -139,11 +139,11 @@ export default {
   background-color: #eee;
 }
 
-.memo.dragging {
+.sticky.dragging {
   box-shadow: 6px 6px 20px rgba(0,0,0,0.3);
 }
 
-.memo textarea {
+.sticky textarea {
   position: absolute;
   cursor: move;
   left: 0;
@@ -159,7 +159,7 @@ export default {
   vertical-align: middle;
 }
 
-.memo .delete-button {
+.sticky .delete-button {
   text-decoration: none;
   position: absolute;
   right: 10px;
@@ -181,7 +181,7 @@ textarea:focus, input:focus{
   outline: none;
 }
 
-.memo:hover .delete-button {
+.sticky:hover .delete-button {
   opacity: 0.5;
 }
 
