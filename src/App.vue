@@ -17,7 +17,7 @@
 <script>
 import firebase from "firebase"
 import config from './config'
-import memo from './memo.vue'
+import memo from './sticky.vue'
 
 firebase.initializeApp(config.firebase)
 
