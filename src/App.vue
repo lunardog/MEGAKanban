@@ -95,7 +95,7 @@ h1 {
 }
 
 section {
-  width: 33%;
+  width: 32%;
   height: 100%;
   float: left;
   text-align: center;
