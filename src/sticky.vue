@@ -37,14 +37,7 @@
 
 
 <script>
-
-function bigRandom() {
-  let rnd = 0
-  for (let i=0; i<5; i++) {
-    rnd += Math.random()*2 - 1
-  }
-  return rnd / 5
-}
+import {natural} from './util'
 
 export default {
   props: ['sticky', 'ref'],

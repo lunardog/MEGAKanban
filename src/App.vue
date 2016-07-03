@@ -17,20 +17,13 @@
 <script>
 import firebase from "firebase"
 import config from './config'
-import sticky from './sticky.vue'
+import sticky from './Sticky.vue'
+import {natural} from './util'
 
 firebase.initializeApp(config.firebase)
 
 let db = new firebase.database()
 let stickiesRef = db.ref('stickies')
-
-function natural() {
-  let rnd = 0
-  for (let i=0; i<5; i++) {
-    rnd += Math.random()*2 - 1
-  }
-  return rnd / 5
-}
 
 export default {
 
