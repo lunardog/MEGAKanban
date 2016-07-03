@@ -6,7 +6,7 @@
 
     <section v-for="section in sections"><h2>{{section}}</h2></section>
 
-    <sticky v-for="sticky in stickies" :sticky="sticky" :ref="childRef(sticky)"></sticky>
+    <board :ref="stickiesRef"></board>
 
     <div v-on:click="addSticky" class="bigplus">⊕</div>
 
@@ -15,49 +15,28 @@
 </template>
 
 <script>
-import firebase from "firebase"
+import firebase from 'firebase'
 import config from './config'
-import sticky from './Sticky.vue'
 import {natural} from './util'
+
+import board from './Board.vue'
 
 firebase.initializeApp(config.firebase)
 
 let db = new firebase.database()
-let stickiesRef = db.ref('stickies')
 
 export default {
 
-  firebase: {
-    stickies: stickiesRef.orderByKey()
-  },
-
-  components: {
-    sticky
-  },
+  components: { board },
 
   data() {
     return {
-      sections: ['TODO', 'DOING', 'DONE']
+      sections: ['TODO', 'DOING', 'DONE'],
+      stickiesRef: db.ref('stickies')
     }
   },
 
   methods: {
-
-    childRef(sticky) {
-      return stickiesRef.child(sticky['.key'])
-    },
-
-    onClick(e) {
-      console.log('doubleclick')
-      console.log(e)
-      stickiesRef.push({
-        text: '',
-        position: {
-          left: e.clientX,
-          top: e.clientY
-        }
-      })
-    },
 
     addSticky(e) {
       e.preventDefault()

@@ -1,4 +1,3 @@
-
 <template>
 
   <div
@@ -40,7 +39,7 @@
 import {natural} from './util'
 
 export default {
-  props: ['sticky', 'ref'],
+  props: ['snapshot', 'sticky'],
 
   data() {
     return {
@@ -53,13 +52,18 @@ export default {
     }
   },
 
+  created() {
+    this.$bindAsObject('sticky', this.snapshot.ref)
+  },
+
   watch: {
     'sticky.color'() {
-      this.ref.update({color: this.sticky.color})
+      this.snapshot.ref.update({color: this.sticky.color})
     }
   },
 
   computed: {
+
     stickyStyle() {
       return {
         backgroundColor: this.sticky.color,
@@ -73,12 +77,12 @@ export default {
   methods: {
 
     updateText() {
-      this.ref.update({text: this.sticky.text})
+      this.snapshot.ref.update({text: this.sticky.text})
     },
 
     deleteSticky(e) {
       e.preventDefault()
-      this.ref.remove()
+      this.snapshot.ref.remove()
     },
 
     mouseDown(e) {
@@ -97,7 +101,7 @@ export default {
 
     mouseLeave(e) {
       if (this.dragging) {
-        this.ref.update({
+        this.snapshot.ref.update({
           position: this.sticky.position,
           rotate: this.sticky.rotate
         })
