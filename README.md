@@ -4,6 +4,8 @@
 
 MEGA Kanban is meant to simulate a physical board with sticky cards, you know, for task management.
 
+Building this for my coworkers, who work from home sometimes.
+
 ## Build Setup
 
 ``` bash
