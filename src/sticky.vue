@@ -23,8 +23,7 @@
           type="radio"
           name="color"
           v-model="sticky.color"
-          :value="color"
-          >
+          :value="color">
       </label>
     </div>
 
@@ -36,10 +35,8 @@
 
 
 <script>
-import {natural} from './util'
-
 export default {
-  props: ['snapshot', 'sticky'],
+  props: ['ref', 'sticky'],
 
   data() {
     return {
@@ -53,12 +50,12 @@ export default {
   },
 
   created() {
-    this.$bindAsObject('sticky', this.snapshot.ref)
+    this.$bindAsObject('sticky', this.ref)
   },
 
   watch: {
     'sticky.color'() {
-      this.snapshot.ref.update({color: this.sticky.color})
+      this.ref.update({color: this.sticky.color})
     }
   },
 
@@ -77,12 +74,12 @@ export default {
   methods: {
 
     updateText() {
-      this.snapshot.ref.update({text: this.sticky.text})
+      this.ref.update({text: this.sticky.text})
     },
 
     deleteSticky(e) {
       e.preventDefault()
-      this.snapshot.ref.remove()
+      this.ref.remove()
     },
 
     mouseDown(e) {
@@ -101,7 +98,7 @@ export default {
 
     mouseLeave(e) {
       if (this.dragging) {
-        this.snapshot.ref.update({
+        this.ref.update({
           position: this.sticky.position,
           rotate: this.sticky.rotate
         })
