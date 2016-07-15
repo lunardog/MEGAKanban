@@ -2,6 +2,8 @@
 
 > A Vue.js project
 
+MEGA Kanban is meant to simulate a physical board with sticky cards, you know, for task management.
+
 ## Build Setup
 
 ``` bash
@@ -14,3 +16,9 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+## TODO:
+
+ - [ ] user authentication (anonymous by default)
+ - [ ] multiple boards (url based)
+ - [ ] fix the dragging glitches
