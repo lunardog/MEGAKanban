@@ -21,9 +21,14 @@ export default {
   },
 
   ready() {
+    // get stickies, ordered by key
     let query = this.ref.orderByKey()
+
+    // whenever value updates
     query.on('value', snapshot => {
+      // reset the `stickies` object
       this.stickies = {}
+      // fill with child snapshots
       snapshot.forEach(child => {
         this.stickies[child.key] = child
       })

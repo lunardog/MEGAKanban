@@ -30,9 +30,11 @@ export default {
 
   methods: {
 
+    // triggered by the big (+) button in the top left corner
     addSticky(e) {
       e.preventDefault()
 
+      // add a sticky with default values
       this.stickiesRef.push({
         text: '',
         position: {
@@ -76,7 +78,6 @@ export default {
 .bigplus:hover {
   opacity: 1.0;
 }
-
 
 h1 {
   opacity: 0.5;

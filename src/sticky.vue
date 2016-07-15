@@ -40,10 +40,7 @@ export default {
   data() {
     return {
       dragging: false,
-      lastPos: {
-        x: 0,
-        y: 0
-      },
+      lastPos: { x: 0, y: 0 },
       colors: ['#fce', '#fec', '#efc', '#cfe', '#cef', '#eee']
     }
   },
@@ -56,6 +53,7 @@ export default {
 
   computed: {
 
+    // determines the style of the DOM object from the data
     stickyStyle() {
       return {
         backgroundColor: this.sticky.color,
@@ -68,20 +66,24 @@ export default {
 
   methods: {
 
+    // triggered when the sticky text is updated
     updateText() {
       this.ref.update({text: this.sticky.text})
     },
 
+    // triggered by the [x] in the top right corner
     deleteSticky(e) {
       e.preventDefault()
       this.ref.remove()
     },
 
+    // triggered on mousedown
     mouseDown(e) {
       e.cancelBubble = true
       this.dragging = true
     },
 
+    // triggered on mouse move
     mouseMove(e) {
       e.cancelBubble = true
       e.preventDefault()
@@ -91,6 +93,7 @@ export default {
       }
     },
 
+    // triggered on mouse leave
     mouseLeave(e) {
       if (this.dragging) {
         this.ref.update({
@@ -101,6 +104,7 @@ export default {
       this.dragging = false
     },
 
+    // triggered on button up, calls mouseLeave
     mouseUp(e) {
       if (this.dragging) {
         this.mouseLeave(e)
