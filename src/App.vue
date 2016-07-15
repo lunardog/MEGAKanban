@@ -55,9 +55,11 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #808284;
+  background: #444;
 }
+
 .bigplus {
+  color: #eee;
   font-size: 100px;
   position: absolute;
   left: 15px;
@@ -66,19 +68,19 @@ export default {
   height: 70px;
   text-align: center;
   line-height: 60px;
-  opacity: 0.1;
+  opacity: 0.5;
   transition: opacity 0.5s;
   cursor: pointer;
 }
 
 .bigplus:hover {
-  opacity: 0.5;
+  opacity: 1.0;
 }
 
 
 h1 {
-  opacity: 0.1;
-  color: black;
+  opacity: 0.5;
+  color: #ccc;
   position: absolute;
   left: 10px;
   bottom: 0px;
@@ -86,13 +88,17 @@ h1 {
   line-height: 20px;
 }
 
+h2 {
+  color: #ccc;
+}
+
 section {
   width: 32%;
   height: 100%;
   float: left;
   text-align: center;
-  border-right: 3px dotted black;
-  opacity: 0.1;
+  border-right: 3px dotted #ccc;
+  opacity: 0.5;
 }
 
 body {

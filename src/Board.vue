@@ -1,5 +1,8 @@
 <template>
-  <sticky v-for="(key, snapshot) in stickies" :ref="snapshot.ref" :sticky="snapshot.val()"></sticky>
+  <sticky
+  v-for="(key, snapshot) in stickies"
+  :ref="snapshot.ref"
+  :sticky="snapshot.val()"></sticky>
 </template>
 
 <script>
