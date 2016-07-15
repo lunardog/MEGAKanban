@@ -10,7 +10,7 @@
 <script>
 import firebase from 'firebase'
 import config from './config'
-import {natural} from './util'
+import util from './util'
 
 import board from './Board.vue'
 
@@ -34,13 +34,13 @@ export default {
     addSticky(e) {
       e.preventDefault()
 
-      stickiesRef.push({
+      this.stickiesRef.push({
         text: '',
         position: {
           left: 0.15 * Math.random(),
           top: 0.9 * Math.random()
         },
-        rotate: 10 * natural(),
+        rotate: 10 * Math.random() - 5,
         color: '#eee'
       })
     }
