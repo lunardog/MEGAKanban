@@ -55,12 +55,18 @@ export default {
 
     // determines the style of the DOM object from the data
     stickyStyle() {
-      return {
-        backgroundColor: this.sticky.color,
-        transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
-        left: (100 * this.sticky.position.left||0) + '%',
-        top: (100 * this.sticky.position.top||0) + '%'
-      }
+      return Object.assign(
+        {
+          backgroundColor: this.sticky.color,
+          transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
+          left: (100 * this.sticky.position.left||0) + '%',
+          top: (100 * this.sticky.position.top||0) + '%',
+        },
+        (!this.dragging ? {
+          'transition-duration': '4s',
+          'transition-property': 'left top transform',
+        } : {})
+      );
     }
   },
 
