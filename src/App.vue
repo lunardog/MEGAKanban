@@ -1,17 +1,10 @@
 <template>
-
   <div id="app">
-
     <h1>メガ看板</h1>
-
     <section v-for="section in sections"><h2>{{section}}</h2></section>
-
     <board :ref="stickiesRef"></board>
-
     <div v-on:click="addSticky" class="bigplus">⊕</div>
-
   </div>
-
 </template>
 
 <script>
@@ -103,7 +96,7 @@ section {
   opacity: 0.1;
 }
 
-body{
+body {
   font-family: Helvetica, sans-serif;
 }
 </style>
