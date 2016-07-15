@@ -1,5 +1,5 @@
 <template>
-  <sticky v-for="sticky in stickies" :snapshot="sticky" :sticky="sticky.val()"></sticky>
+  <sticky v-for="(key, snapshot) in stickies" :ref="snapshot.ref" :sticky="snapshot.val()"></sticky>
 </template>
 
 <script>
@@ -13,16 +13,16 @@ export default {
 
   data() {
     return {
-      stickies: []
+      stickies: {}
     }
   },
 
   ready() {
     let query = this.ref.orderByKey()
     query.on('value', snapshot => {
-      this.stickies = []
+      this.stickies = {}
       snapshot.forEach(child => {
-        this.stickies.push(child)
+        this.stickies[child.key] = child
       })
     })
   }
