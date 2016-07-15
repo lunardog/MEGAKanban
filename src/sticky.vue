@@ -13,7 +13,6 @@
       v-on:blur="updateText"
       v-model="sticky.text"></textarea>
 
-
     <div class="colors">
       <label
         class="color"
@@ -49,10 +48,6 @@ export default {
     }
   },
 
-  created() {
-    this.$bindAsObject('sticky', this.ref)
-  },
-
   watch: {
     'sticky.color'() {
       this.ref.update({color: this.sticky.color})
@@ -65,8 +60,8 @@ export default {
       return {
         backgroundColor: this.sticky.color,
         transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
-        left: (100*this.sticky.position.left||0) + '%',
-        top: (100*this.sticky.position.top||0) + '%'
+        left: (100 * this.sticky.position.left||0) + '%',
+        top: (100 * this.sticky.position.top||0) + '%'
       }
     }
   },
