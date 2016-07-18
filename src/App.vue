@@ -22,9 +22,10 @@ export default {
   components: { board },
 
   data() {
+    let board = encodeURIComponent(this.$route.params.board)
     return {
       sections: ['TODO', 'DOING', 'DONE'],
-      stickiesRef: db.ref('stickies')
+      stickiesRef: db.ref('boards/' + board + '/stickies')
     }
   },
 
