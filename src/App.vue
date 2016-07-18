@@ -29,10 +29,8 @@ export default {
   },
 
   created() {
-    firebase.auth().signInAnonymously().then(() => {
-      let board = encodeURIComponent(this.$route.params.board)
-      this.stickiesRef = db.ref('boards/' + board + '/stickies')
-    }).catch(error => alert(error))
+    let board = encodeURIComponent(this.$route.params.board)
+    this.stickiesRef = db.ref('boards/' + board).child('stickies')
   },
 
   methods: {
