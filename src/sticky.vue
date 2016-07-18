@@ -55,18 +55,12 @@ export default {
 
     // determines the style of the DOM object from the data
     stickyStyle() {
-      return Object.assign(
-        {
-          backgroundColor: this.sticky.color,
-          transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
-          left: (100 * this.sticky.position.left||0) + '%',
-          top: (100 * this.sticky.position.top||0) + '%',
-        },
-        (!this.dragging ? {
-          'transition-duration': '4s',
-          'transition-property': 'left top transform',
-        } : {})
-      );
+      return {
+        backgroundColor: this.sticky.color,
+         transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
+         left: (100 * this.sticky.position.left||0) + '%',
+         top: (100 * this.sticky.position.top||0) + '%',
+      };
     }
   },
 
@@ -136,10 +130,13 @@ export default {
   cursor: move;
   position: absolute;
   background-color: #eee;
+  transition-duration: 1s;
+  transition-property: left top transform;
 }
 
 .sticky.dragging {
   box-shadow: 6px 6px 20px rgba(0,0,0,0.3);
+  transition-property: none;
 }
 
 .sticky textarea {
@@ -175,6 +172,7 @@ export default {
   opacity: 0;
   transition: opacity 0.5s;
 }
+
 
 textarea:focus, input:focus{
   outline: none;
