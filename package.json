@@ -1,6 +1,6 @@
 {
-  "name": "fireboard",
-  "description": "A Vue.js project",
+  "name": "MEGAKanban",
+  "description": "Kanban simulator for remote work",
   "author": "Leszek <leszek@rybicki.cc>",
   "private": true,
   "scripts": {
