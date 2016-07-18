@@ -136,11 +136,8 @@ export default {
 
 .sticky.dragging {
   box-shadow: 6px 6px 20px rgba(0,0,0,0.3);
-<<<<<<< HEAD
   z-index: 1;
-=======
   transition-property: none;
->>>>>>> master
 }
 
 .sticky textarea {
