@@ -1,5 +1,11 @@
 {
   "projects": {
     "default": "abecon-3c221"
-  }
+  },
+  "rewrites": [ 
+    {
+      "source": "**",
+      "destination": "/index.html"
+    } 
+  ]
 }
