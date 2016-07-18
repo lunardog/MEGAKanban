@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <h1>メガ看板</h1>
     <section v-for="section in sections"><h2>{{section}}</h2></section>
     <board :ref="stickiesRef"></board>
@@ -22,9 +22,10 @@ export default {
   components: { board },
 
   data() {
+    let board = encodeURIComponent(this.$route.params.board)
     return {
       sections: ['TODO', 'DOING', 'DONE'],
-      stickiesRef: db.ref('stickies')
+      stickiesRef: db.ref('boards/' + board + '/stickies')
     }
   },
 
