@@ -9,9 +9,9 @@
 
 <script>
 import firebase from 'firebase'
-import config from './config'
+import config from '../config/config'
 
-import board from './Board.vue'
+import board from './components/Board.vue'
 
 firebase.initializeApp(config.firebase)
 
