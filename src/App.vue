@@ -1,7 +1,7 @@
 <template>
   <div id="app" v-show="authenticated">
-    <h1>メガ看板</h1>
     <section v-for="section in sections"><h2>{{section}}</h2></section>
+    <h1>メガ看板</h1>
     <board :ref="stickiesRef"></board>
     <div v-on:click="addSticky" class="bigplus">⊕</div>
   </div>
@@ -30,7 +30,7 @@ export default {
     }
   },
 
-  ready() {
+  created() {
     firebase.auth().signInAnonymously().then(() => {
       this.authenticated = true
     })
@@ -102,12 +102,16 @@ h2 {
 }
 
 section {
-  width: 32%;
+  width: 33%;
+  border-collapse: collapse;
   height: 100%;
   float: left;
   text-align: center;
-  border-right: 3px dotted #ccc;
+  border-left: 3px dotted #ccc;
   opacity: 0.5;
+}
+section:first-child{
+  border-left: none;
 }
 
 body {
