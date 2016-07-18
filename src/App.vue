@@ -1,8 +1,8 @@
 <template>
-  <div id="app" v-show="authenticated">
+  <div id="app">
     <section v-for="section in sections"><h2>{{section}}</h2></section>
     <h1>メガ看板</h1>
-    <board :ref="stickiesRef"></board>
+    <board :ref="stickiesRef" v-if="stickiesRef"></board>
     <div v-on:click="addSticky" class="bigplus">⊕</div>
   </div>
 </template>
@@ -22,18 +22,17 @@ export default {
   components: { board },
 
   data() {
-    let board = encodeURIComponent(this.$route.params.board)
     return {
-      authenticated: false,
       sections: ['TODO', 'DOING', 'DONE'],
-      stickiesRef: db.ref('boards/' + board + '/stickies')
+      stickiesRef: null
     }
   },
 
   created() {
     firebase.auth().signInAnonymously().then(() => {
-      this.authenticated = true
-    })
+      let board = encodeURIComponent(this.$route.params.board)
+      this.stickiesRef = db.ref('boards/' + board + '/stickies')
+    }).catch(error => alert(error))
   },
 
   methods: {
