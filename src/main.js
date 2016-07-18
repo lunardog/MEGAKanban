@@ -6,14 +6,21 @@ import App from './App.vue'
 
 Vue.use(VueRouter)
 
-let router = new VueRouter()
+let router = new VueRouter({
+  hashboang: false,
+  history: true,
+})
 
 let MEGAKanban = Vue.extend({})
 
 let Redirect = Vue.extend({
   created() {
-    // create a random board name and redirect to it
-    router.go(this.randomName())
+    let boardName = localStorage.getItem('MEGAKanban_board')
+    if (!boardName) {
+      boardName = this.randomName()
+      localStorage.setItem('MEGAKanban_board', boardName)
+    }
+    router.go(boardName)
   },
   methods: {
     // generate board name using timestamp
