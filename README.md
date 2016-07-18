@@ -23,6 +23,10 @@ npm run dev
 npm run build
 ```
 
+## DEMO:
+
+[megakanban.firebaseapp.com](http://megakanban.firebaseapp.com)
+
 ## TODO:
 
  - [ ] user authentication (anonymous by default)
