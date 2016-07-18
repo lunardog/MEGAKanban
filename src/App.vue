@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div>
     <h1>メガ看板</h1>
     <section v-for="section in sections"><h2>{{section}}</h2></section>
     <board :ref="stickiesRef"></board>
