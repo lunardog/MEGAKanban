@@ -8,7 +8,9 @@ Building this for my coworkers, who work from home sometimes.
 
 ## Build Setup
 
-First, get your firebase config from the [Firebase Console](https://console.firebase.google.com/) and put it in `config.json`.
+First, get your firebase config from the [Firebase Console](https://console.firebase.google.com/) and put it in `config/config.json`.
+
+Secondly, enable anonymous auth in your firebase console.
 
 ``` bash
 # install dependencies

@@ -1,6 +1,6 @@
 {
   "projects": {
-    "default": "abecon-3c221"
+    "default": "megakanban"
   },
   "rewrites": [ 
     {
