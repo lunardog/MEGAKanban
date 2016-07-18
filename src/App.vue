@@ -9,7 +9,7 @@
 
 <script>
 import firebase from 'firebase'
-import config from './config'
+import config from '../config/config'
 
 import board from './Board.vue'
 
