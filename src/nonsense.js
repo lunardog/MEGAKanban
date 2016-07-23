@@ -168,7 +168,7 @@ export function randomNumber() {
 
 export function randomSet() {
   let adjectives = [pickOne(qualities), pickOne(generals)]
-  let nouns = [pickOne(picturables), pickOne(generals)]
+  let nouns = [pickOne(picturables), pickOne(picturables), pickOne(generals)]
   return ['the', pickOne(adjectives), pickOne(nouns), pickOne(technobabble)]
 }
 
