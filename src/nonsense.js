@@ -153,7 +153,7 @@ export const technobabble = [
 ]
 
 export function pickOne(set) {
-  return set[Math.round(Math.random() * set.length)]
+  return set[Math.floor(Math.random() * set.length)]
 }
 
 export function randomNumber() {
