@@ -2,7 +2,7 @@
   <div id="app">
     <section v-for="section in sections"><h2>{{section}}</h2></section>
     <h1>メガ看板</h1>
-    <board :ref="stickiesRef" v-if="stickiesRef"></board>
+    <board :ref="stickiesRef"></board>
     <div v-on:click="addSticky" class="bigplus">⊕</div>
   </div>
 </template>
@@ -22,15 +22,11 @@ export default {
   components: { board },
 
   data() {
+    let board = encodeURIComponent(this.$route.params.board)
     return {
       sections: ['TODO', 'DOING', 'DONE'],
-      stickiesRef: null
+      stickiesRef: db.ref('boards').child(board).child('stickies')
     }
-  },
-
-  created() {
-    let board = encodeURIComponent(this.$route.params.board)
-    this.stickiesRef = db.ref('boards/' + board).child('stickies')
   },
 
   methods: {

@@ -14,7 +14,8 @@ let router = new VueRouter({
 let MEGAKanban = Vue.extend({})
 
 let Redirect = Vue.extend({
-  created() {
+
+  ready() {
     let boardName = localStorage.getItem('MEGAKanban_board')
     if (!boardName) {
       boardName = this.randomName()
@@ -22,6 +23,7 @@ let Redirect = Vue.extend({
     }
     router.go(boardName)
   },
+
   methods: {
     // generate board name using timestamp
     // @todo: generate memorable names
@@ -34,11 +36,11 @@ let Redirect = Vue.extend({
 
 router.map({
   '/': {
-    name: 'root', 
+    name: 'root',
     component: Redirect
   },
   '/:board': {
-    name: 'board', 
+    name: 'board',
     component: App
   }
 })
