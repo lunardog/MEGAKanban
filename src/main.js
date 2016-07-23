@@ -5,9 +5,6 @@ import VueRouter from 'vue-router'
 import nonsense from './nonsense'
 import App from './App.vue'
 
-window.randomSet = nonsense.randomSet
-window.randomNumber = nonsense.randomNumber
-
 Vue.use(VueRouter)
 
 let router = new VueRouter({
