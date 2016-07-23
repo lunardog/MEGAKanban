@@ -17,17 +17,12 @@ let MEGAKanban = Vue.extend({})
 let Redirect = Vue.extend({
 
   ready() {
-    let boardName = this.randomName()
+    let boardName = nonsense.randomSet()
+      .concat(nonsense.randomNumber())
+      .join('-')
     router.go(boardName)
-  },
-
-  methods: {
-    randomName() {
-      return nonsense.randomSet()
-        .concat(nonsense.randomNumber())
-        .join('-')
-    }
   }
+
 })
 
 router.map({
