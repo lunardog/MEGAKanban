@@ -29,6 +29,10 @@ npm run build
 
 ## TODO:
 
- - [ ] user authentication (anonymous by default)
- - [ ] multiple boards (url based)
  - [ ] fix the dragging glitches
+ - [ ] landing page
+
+## DONE:
+
+ - [x] anonymous user authentication
+ - [x] multiple boards (url based, random name at first visit)
