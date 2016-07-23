@@ -167,8 +167,8 @@ export function randomNumber() {
 }
 
 export function randomSet() {
-  let adjectives = [].concat(qualities, opposites)
-  let nouns = [].concat(picturables, generals)
+  let adjectives = [pickOne(qualities), pickOne(opposites), pickOne(generals)]
+  let nouns = [pickOne(picturables), pickOne(generals)]
   return ['the', pickOne(adjectives), pickOne(nouns), pickOne(technobabble)]
 }
 
