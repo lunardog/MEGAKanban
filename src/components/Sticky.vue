@@ -41,7 +41,7 @@ export default {
     return {
       dragging: false,
       lastPos: { x: 0, y: 0 },
-      colors: ['#ffa58c', '#eff777', '#c5db00', '#ffdc82', '#96f2d2', '#eee']
+      colors: ['#43F2FF', '#C2FF9B', '#65F088', '#FFC073', '#FC7A2B', '#eee']
     }
   },
 
