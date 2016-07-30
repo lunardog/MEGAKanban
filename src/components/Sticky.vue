@@ -41,7 +41,7 @@ export default {
     return {
       dragging: false,
       lastPos: { x: 0, y: 0 },
-      colors: ['#fce', '#fec', '#efc', '#cfe', '#cef', '#eee']
+      colors: ['#43F2FF', '#C2FF9B', '#65F088', '#FFC073', '#FC7A2B', '#eee']
     }
   },
 
@@ -124,7 +124,7 @@ export default {
   border-radius: 3px;
   display: inline-block;
   width: 200px;
-  min-height: 160px;
+  height: 160px;
   margin-left: -100px;
   margin-top: -80px;
   cursor: move;
@@ -132,6 +132,17 @@ export default {
   background-color: #eee;
   transition-duration: 1s;
   transition-property: left top transform;
+}
+
+.sticky:before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: -webkit-linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* Standard syntax */
 }
 
 .sticky.dragging {
@@ -154,6 +165,7 @@ export default {
   font-family: "Times new roman";
   display: table-cell;
   vertical-align: middle;
+  resize: none;
 }
 
 .sticky .delete-button {
