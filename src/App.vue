@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <h1>メガ看板</h1>
     <section v-for="section in sections"><h2>{{section}}</h2></section>
+    <h1>メガ看板</h1>
     <board :ref="stickiesRef"></board>
     <div v-on:click="addSticky" class="bigplus">⊕</div>
   </div>
@@ -9,9 +9,9 @@
 
 <script>
 import firebase from 'firebase'
-import config from './config'
+import config from '../config/config'
 
-import board from './Board.vue'
+import board from './components/Board.vue'
 
 firebase.initializeApp(config.firebase)
 
@@ -22,9 +22,10 @@ export default {
   components: { board },
 
   data() {
+    let board = encodeURIComponent(this.$route.params.board)
     return {
       sections: ['TODO', 'DOING', 'DONE'],
-      stickiesRef: db.ref('stickies')
+      stickiesRef: db.ref('boards').child(board).child('stickies')
     }
   },
 
@@ -57,7 +58,11 @@ export default {
   bottom: 0;
   left: 0;
   right: 0;
-  background: #444;
+  background: #333;
+  background: -webkit-linear-gradient(#444, #000); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#444, #000); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#444, #000); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#444, #000); /* Standard syntax */
 }
 
 .bigplus {
@@ -70,8 +75,9 @@ export default {
   height: 70px;
   text-align: center;
   line-height: 60px;
-  opacity: 0.5;
+  opacity: 0.2;
   transition: opacity 0.5s;
+  text-shadow: 0 0 5px black;
   cursor: pointer;
 }
 
@@ -80,26 +86,37 @@ export default {
 }
 
 h1 {
-  opacity: 0.5;
-  color: #ccc;
+  opacity: 0.3;
+  color: #666;
   position: absolute;
-  left: 10px;
-  bottom: 0px;
+  text-align: center;
+  width: 100%;
+  top: 0px;
   font-size: 60px;
   line-height: 20px;
 }
 
 h2 {
   color: #ccc;
+  text-shadow: 0 0 5px black;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 10px;
 }
 
 section {
-  width: 32%;
+  width: 33%;
+  border-collapse: collapse;
   height: 100%;
+  position: relative;
   float: left;
   text-align: center;
-  border-right: 3px dotted #ccc;
-  opacity: 0.5;
+  border-left: 3px dotted #666;
+  opacity: 0.3;
+}
+section:first-child{
+  border-left: none;
 }
 
 body {
