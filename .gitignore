@@ -3,3 +3,5 @@ node_modules/
 npm-debug.log
 src/config.js
 public/dist
+
+config/config.js
