@@ -29,10 +29,10 @@ npm run build
 
 ## TODO:
 
- - [ ] fix the dragging glitches
  - [ ] landing page
 
 ## DONE:
 
+ - [x] fix the dragging glitches
  - [x] anonymous user authentication
  - [x] multiple boards (url based, random name at first visit)
