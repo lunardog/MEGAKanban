@@ -10,7 +10,7 @@
       v-on:mouseleave="mouseUp"
       v-on:mousemove="mouseMove">
     <textarea
-      v-on:blur="updateText"
+      v-on:keyup="updateText"
       v-model="sticky.text"></textarea>
 
     <div class="colors">
@@ -81,6 +81,8 @@ export default {
     mouseDown(e) {
       e.cancelBubble = true
       this.dragging = true
+	  this.layerPos.x = this.$el.offsetWidth / 2 - e.layerX;
+	  this.layerPos.y = this.$el.offsetHeight / 2 - e.layerY;
     },
 
     // triggered on mouse move
@@ -88,8 +90,8 @@ export default {
       e.cancelBubble = true
       e.preventDefault()
       if(this.dragging){
-        this.sticky.position.left = (e.pageX) / window.innerWidth
-        this.sticky.position.top = (e.pageY) / window.innerHeight
+        this.sticky.position.left = (e.pageX + this.layerPos.x) / window.innerWidth
+        this.sticky.position.top = (e.pageY + this.layerPos.y) / window.innerHeight
       }
     },
 
