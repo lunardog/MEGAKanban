@@ -10,7 +10,7 @@
       v-on:mouseleave="mouseUp"
       v-on:mousemove="mouseMove">
     <textarea
-      v-on:blur="updateText"
+      v-on:keyup="updateText"
       v-model="sticky.text"></textarea>
 
     <div class="colors">
@@ -40,6 +40,7 @@ export default {
   data() {
     return {
       dragging: false,
+	  layerPos: { x: 0, y: 0 },
       lastPos: { x: 0, y: 0 },
       colors: ['#43F2FF', '#C2FF9B', '#65F088', '#FFC073', '#FC7A2B', '#eee']
     }
@@ -81,6 +82,8 @@ export default {
     mouseDown(e) {
       e.cancelBubble = true
       this.dragging = true
+	  this.layerPos.x = this.$el.offsetWidth / 2 - e.pageX + this.$el.offsetLeft
+	  this.layerPos.y = this.$el.offsetHeight / 2 - e.pageY + this.$el.offsetTop
     },
 
     // triggered on mouse move
@@ -88,8 +91,8 @@ export default {
       e.cancelBubble = true
       e.preventDefault()
       if(this.dragging){
-        this.sticky.position.left = (e.pageX) / window.innerWidth
-        this.sticky.position.top = (e.pageY) / window.innerHeight
+        this.sticky.position.left = (e.pageX + this.layerPos.x) / window.innerWidth
+        this.sticky.position.top = (e.pageY + this.layerPos.y) / window.innerHeight
       }
     },
 
