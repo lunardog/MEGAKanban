@@ -9,9 +9,13 @@
       v-on:mouseleave="mouseLeave"
       v-on:mouseleave="mouseUp"
       v-on:mousemove="mouseMove">
-    <textarea
-      v-on:keyup="updateText"
-      v-model="sticky.text"></textarea>
+	<div class="position">
+		<div
+		  class="textarea"
+		  v-bind:contenteditable="true"
+		  v-on:keyup="updateText"
+		  v-model="sticky.text"></div>
+	</div>
 
     <div class="colors">
       <label
@@ -154,13 +158,17 @@ export default {
   transition-property: none;
 }
 
-.sticky textarea {
+
+.sticky .position {
   position: absolute;
+  display:table;
   cursor: move;
   left: 0;
   top: 0;
   width: 80%;
   height: 100%;
+}
+.sticky .textarea {
   text-align: center;
   border: none;
   background: none;
@@ -190,7 +198,7 @@ export default {
 }
 
 
-textarea:focus, input:focus{
+.textarea:focus, input:focus{
   outline: none;
 }
 
