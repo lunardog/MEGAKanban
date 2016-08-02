@@ -12,7 +12,7 @@
     <div class="position">
       <div
         class="textarea"
-        v-bind:contenteditable="true"
+        contenteditable="true"
         v-on:keyup="updateText"
         v-model="sticky.text"></div>
     </div>
