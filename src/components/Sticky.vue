@@ -167,7 +167,7 @@ export default {
   display: table-cell;
   vertical-align: middle;
   resize: none;
-  font-family: 'Rock Salt', cursive;
+  font-family: 'Neucha', cursive;
 }
 
 .sticky .delete-button {
