@@ -1,5 +1,7 @@
 # メガ看板 (MEGAKanban)
 
+![https://travis-ci.org/lunardog/MEGAKanban.svg?branch=master](https://travis-ci.org/lunardog/MEGAKanban.svg?branch=master)
+
 > A Vue.js project
 
 MEGA Kanban is meant to simulate a physical board with sticky cards, you know, for task management.
