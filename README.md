@@ -1,6 +1,7 @@
 # メガ看板 (MEGAKanban)
 
 ![https://travis-ci.org/lunardog/MEGAKanban.svg?branch=master](https://travis-ci.org/lunardog/MEGAKanban.svg?branch=master)
+[![Code Climate](https://codeclimate.com/github/lunardog/MEGAKanban/badges/gpa.svg)](https://codeclimate.com/github/lunardog/MEGAKanban)
 
 > A Vue.js project
 
