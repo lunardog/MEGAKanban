@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 
 import nonsense from './nonsense'
 import App from './App.vue'
+import Landing from './Landing.vue'
 
 Vue.use(VueRouter)
 
@@ -28,7 +29,7 @@ let Redirect = Vue.extend({
 router.map({
   '/': {
     name: 'root',
-    component: Redirect
+    component: Landing
   },
   '/:board': {
     name: 'board',
