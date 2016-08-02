@@ -170,8 +170,6 @@ export default {
 }
 .sticky .textarea {
   text-align: center;
-  border: none;
-  background: none;
   font-size: 20px;
   font-family: "Times new roman";
   display: table-cell;
