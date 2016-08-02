@@ -1,5 +1,4 @@
 <template>
-
   <div
       class="sticky"
       v-bind:class="{ dragging: dragging}"
@@ -165,10 +164,10 @@ export default {
   border: none;
   background: none;
   font-size: 20px;
-  font-family: "Times new roman";
   display: table-cell;
   vertical-align: middle;
   resize: none;
+  font-family: 'Rock Salt', cursive;
 }
 
 .sticky .delete-button {
