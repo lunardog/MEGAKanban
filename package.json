@@ -7,7 +7,7 @@
     "dev": "webpack-dev-server --inline --hot --history-api-fallback --content-base public/ --port 8080",
     "build": "npm run webpack",
     "webpack": "webpack --colors --progress",
-    "deploy": "npm run build && firebase deploy --token $FIREBASE_TOKEN"
+    "deploy": "npm run build && firebase deploy -P megakanban --token $FIREBASE_TOKEN"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
