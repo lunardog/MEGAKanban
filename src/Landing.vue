@@ -55,9 +55,8 @@ export default {
 }
 #form {
   position:relative;
-  margin:90px auto 0px;
+  margin:90px auto;
   width: 395px;
-  height: 46px;
 }
 #form .url {
   width: 96px;
@@ -68,24 +67,12 @@ export default {
   color: #959aa1;
 }
 #form .control {
+  position:relative;
   margin-top:7px;
   width: 395px;
   height: 46px;
-  border: solid 2px $pinkish-grey;
 }
-#form .check {
-  width: 42px;
-  height: 42px;
-  top: 23px;
-  right: 2px;
-  border-radius: 2px;
-  background-color: #82b9de;
-  background-image: url(./img/check.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-}
-#form input {
+input {
   font-family: HiraginoSans-W6;
   font-size: 12px;
   font-weight: 400;
@@ -94,7 +81,7 @@ export default {
   height: 100%;
   border-radius: 4px;
   border:solid 2px grey;
-  padding-right: 45px;
+  padding-right: 80px;
   padding-left: 20px;
   -moz-sizing: border-box;
   -webkit-box-sizing: border-box;
