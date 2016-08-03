@@ -2,7 +2,6 @@ import Firebase from 'firebase'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import nonsense from './nonsense'
 import App from './App.vue'
 import Landing from './Landing.vue'
 
@@ -14,17 +13,6 @@ let router = new VueRouter({
 })
 
 let MEGAKanban = Vue.extend({})
-
-let Redirect = Vue.extend({
-
-  ready() {
-    let boardName = nonsense.randomSet()
-      .concat(nonsense.randomNumber())
-      .join('-')
-    router.go(boardName)
-  }
-
-})
 
 router.map({
   '/': {
