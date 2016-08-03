@@ -61,12 +61,18 @@
   height: 42px;
   top: 23px;
   right: 2px;
-  border-radius: inherit;
+  border-radius: 2px;
   background-color: #82b9de;
+  background-image: url(./img/check.svg);
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
 }
 #form input {
-  font-size:14px;
+  font-family: HiraginoSans-W6;
+  font-size: 12px;
+  font-weight: 400;
+  color: #7e7e7e;
   width: 100%;
   height: 100%;
   border-radius: 4px;
