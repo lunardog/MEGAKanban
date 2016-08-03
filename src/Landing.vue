@@ -54,23 +54,23 @@
   margin-top:7px;
   width: 395px;
   height: 46px;
-  border-radius: 4px;
-  background-color: #ffffff;
   border: solid 2px $pinkish-grey;
 }
 #form .check {
-  width: 45px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
+  top: 23px;
+  right: 2px;
   border-radius: inherit;
   background-color: #82b9de;
   position: absolute;
-  right: 0;
 }
 #form input {
   font-size:14px;
   width: 100%;
   height: 100%;
-  border-radius: inherit;
+  border-radius: 4px;
+  border:solid 2px grey;
   padding-right: 45px;
   padding-left: 20px;
   -moz-sizing: border-box;
