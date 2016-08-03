@@ -5,10 +5,11 @@
   <div id="form">
     <div class="url">megakanban.firebaseapp.com/</div>
     <div class="control">
-      <span class="check"></span>
       <input type="text"
         v-model="formText"
         v-on:keyup.enter="enterForm">
+      <button class="refresh"></button>
+      <button class="check"></button>
     </div>
   </div>
   </div>
@@ -98,5 +99,31 @@ export default {
   -moz-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+button {
+  border:1px solid transparent;
+  border-radius: 2px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+}
+button:focus{
+  outline:none;
+}
+.check {
+  width: 42px;
+  height: 42px;
+  top: 2px;
+  right: 2px;
+  background-color: #82b9de;
+  background-image: url(./img/check.svg);
+}
+.refresh {
+  width: 42px;
+  height: 42px;
+  top: 2px;
+  right: 42px;
+  background-color: transparent;
+  background-image: url(./img/refresh.svg);
 }
 </style>
