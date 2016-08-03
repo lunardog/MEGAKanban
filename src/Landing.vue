@@ -19,7 +19,13 @@
 </template>
 
 <script>
+import nonsense from './nonsense'
+
 export default {
+  ready(){
+    this.refreshUrl()
+  },
+
   data() {
     return {
       formText:""
@@ -27,8 +33,13 @@ export default {
   },
 
   methods: {
-    enterForm() {
-      console.log(this.formText);
+    rootBoard() {
+      this.$route.router.go(this.formText)
+    },
+    refreshUrl() {
+      this.formText = nonsense.randomSet()
+      .concat(nonsense.randomNumber())
+      .join('-')
     }
   }
 }
