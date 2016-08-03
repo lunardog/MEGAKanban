@@ -2,6 +2,13 @@
   <div id="landing">
   <div id="title">メガ看板</div>
   <div id="underline"></div>
+  <div id="form">
+    <div class="url">megakanban.firebaseapp.com/</div>
+    <div class="control">
+      <span class="check"></span>
+      <input type="text">
+    </div>
+  </div>
   </div>
 </template>
 
@@ -15,7 +22,7 @@
   background-image: linear-gradient(to bottom, #242424, #7b7b7b);
 }
 #title {
-  margin:10% auto;
+  margin:10% auto 8px;
   width: 144px;
   height: 36px;
   font-family: HiraginoSans-W6;
@@ -24,10 +31,50 @@
   color: #7e7e7e;
 }
 #underline {
-  margin:11% auto;
+  margin:20px auto;
   width: 500px;
   height: 1px;
   border: solid 1px #777777;
 }
+#form {
+  position:relative;
+  margin:90px auto 0px;
+  width: 395px;
+  height: 46px;
+}
+#form .url {
+  width: 96px;
+  height: 14px;
+  font-family: HiraginoSans-W3;
+  font-size: 14px;
+  font-weight: 400;
+  color: #959aa1;
+}
+#form .control {
+  margin-top:7px;
+  width: 395px;
+  height: 46px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  border: solid 2px $pinkish-grey;
+}
+#form .check {
+  width: 45px;
+  height: 46px;
+  border-radius: inherit;
+  background-color: #82b9de;
+  position: absolute;
+  right: 0;
+}
+#form input {
+  font-size:14px;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  padding-right: 45px;
+  padding-left: 20px;
+  -moz-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
 </style>
-
