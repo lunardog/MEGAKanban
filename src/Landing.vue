@@ -6,12 +6,28 @@
     <div class="url">megakanban.firebaseapp.com/</div>
     <div class="control">
       <span class="check"></span>
-      <input type="text">
+      <input type="text"
+        v-model="formText"
+        v-on:keyup.enter="enterForm">
     </div>
   </div>
   </div>
 </template>
+<script>
+export default {
+  data() {
+    return {
+      formText:""
+    }
+  },
 
+  methods: {
+    enterForm() {
+      console.log(this.formText);
+    }
+  }
+}
+</script>
 <style>
 #landing {
   position: fixed;
