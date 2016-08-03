@@ -65,7 +65,6 @@ export default {
 .underline {
   margin:8px auto;
   width: 500px;
-  height: 1px;
   border: solid 1px #777777;
 }
 #form {
