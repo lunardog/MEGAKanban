@@ -1,17 +1,20 @@
 <template>
   <div id="landing">
-  <div id="title">メガ看板</div>
-  <div id="underline"></div>
-  <div id="form">
-    <div class="url">megakanban.firebaseapp.com/</div>
-    <div class="control">
-      <input type="text"
-        v-model="formText"
-        v-on:keyup.enter="enterForm">
-      <button class="refresh"></button>
-      <button class="check"></button>
+    <div class="title">
+      メガ看板
+      <div class="underline"></div>
     </div>
-  </div>
+    <div id="form">
+      <div class="url">megakanban.firebaseapp.com/</div>
+      <div class="control">
+        <input type="text"
+          v-model="formText">
+        <button class="refresh"
+          v-on:click="refreshUrl"></button>
+        <button class="check"
+          v-on:click="rootBoard"></button>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -38,24 +41,23 @@ export default {
   right: 0;
   background-image: linear-gradient(to bottom, #242424, #7b7b7b);
 }
-#title {
-  margin:10% auto 8px;
-  width: 144px;
-  height: 36px;
+.title {
+  margin:10% auto 0px;
   font-family: HiraginoSans-W6;
   font-size: 36px;
   font-weight: 400;
   color: #7e7e7e;
+  text-align:center;
 }
-#underline {
-  margin:20px auto;
+.underline {
+  margin:8px auto;
   width: 500px;
   height: 1px;
   border: solid 1px #777777;
 }
 #form {
   position:relative;
-  margin:90px auto;
+  margin:110px auto;
   width: 395px;
 }
 #form .url {
@@ -88,6 +90,7 @@ input {
   box-sizing: border-box;
 }
 button {
+  cursor: pointer;
   border:1px solid transparent;
   border-radius: 2px;
   background-repeat: no-repeat;
