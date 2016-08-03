@@ -3,11 +3,14 @@
   "description": "Kanban simulator for remote work",
   "author": "Leszek <leszek@rybicki.cc>",
   "private": true,
+  "engines": {
+    "node": "^6.1.0"
+  },
   "scripts": {
     "dev": "webpack-dev-server --inline --hot --history-api-fallback --content-base public/ --port 8080",
     "build": "npm run webpack",
     "webpack": "webpack --colors --progress",
-    "deploy": "npm run build && firebase use megakanban --token $FIREBASE_TOKEN && firebase deploy --token $FIREBASE_TOKEN"
+    "deploy": "npm run build && firebase deploy --token $FIREBASE_TOKEN"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",
@@ -16,6 +19,7 @@
     "vue-router": "^0.7.13"
   },
   "devDependencies": {
+    "firebase-tools": "^3.0.6",
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
     "babel-plugin-transform-runtime": "^6.0.0",
