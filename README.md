@@ -30,12 +30,3 @@ npm run build
 
 [megakanban.firebaseapp.com](http://megakanban.firebaseapp.com)
 
-## TODO:
-
- - [ ] landing page
-
-## DONE:
-
- - [x] fix the dragging glitches
- - [x] anonymous user authentication
- - [x] multiple boards (url based, random name at first visit)
