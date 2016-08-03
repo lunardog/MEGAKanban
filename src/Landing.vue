@@ -55,7 +55,6 @@ export default {
 }
 .title {
   margin:10% auto 0px;
-  font-family: HiraginoSans-W6;
   font-size: 36px;
   font-weight: 400;
   color: #7e7e7e;
@@ -74,7 +73,6 @@ export default {
 #form .url {
   width: 96px;
   height: 14px;
-  font-family: HiraginoSans-W3;
   font-size: 14px;
   font-weight: 400;
   color: #959aa1;
@@ -86,7 +84,6 @@ export default {
   height: 46px;
 }
 input {
-  font-family: HiraginoSans-W6;
   font-size: 12px;
   font-weight: 400;
   color: #7e7e7e;
