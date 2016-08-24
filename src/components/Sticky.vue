@@ -12,15 +12,14 @@
       <div
         class="textarea"
         contenteditable="true"
-        v-on:keyup="updateText"
-        v-model="sticky.text"></div>
+        v-on:keyup="updateText">{{ sticky.text }}</div>
     </div>
 
     <div class="colors">
       <label
         class="color"
         v-for="color in colors"
-        v-bind:style="{'color': color}">
+        v-bind:style="{color: color}">
         <input
           type="radio"
           name="color"
@@ -61,9 +60,9 @@ export default {
     stickyStyle() {
       return {
         backgroundColor: this.sticky.color,
-         transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
-         left: (100 * this.sticky.position.left||0) + '%',
-         top: (100 * this.sticky.position.top||0) + '%',
+        transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
+        left: (100 * this.sticky.position.left||0) + '%',
+        top: (100 * this.sticky.position.top||0) + '%',
       };
     }
   },
@@ -71,7 +70,8 @@ export default {
   methods: {
 
     // triggered when the sticky text is updated
-    updateText() {
+    updateText(event) {
+      this.sticky.text = event.target.textContent
       this.ref.update({text: this.sticky.text})
     },
 
@@ -93,9 +93,11 @@ export default {
     mouseMove(e) {
       e.cancelBubble = true
       e.preventDefault()
-      if(this.dragging){
-        this.sticky.position.left = (e.pageX + this.layerPos.x) / window.innerWidth
-        this.sticky.position.top = (e.pageY + this.layerPos.y) / window.innerHeight
+      if (this.dragging) {
+        this.sticky.position = {
+          left: (e.pageX + this.layerPos.x) / window.innerWidth,
+          top: (e.pageY + this.layerPos.y) / window.innerHeight
+        }
       }
     },
 
