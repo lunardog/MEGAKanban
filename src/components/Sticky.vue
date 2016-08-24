@@ -9,10 +9,8 @@
       v-on:mouseleave="mouseUp"
       v-on:mousemove="mouseMove">
     <div class="position">
-      <div
-        class="textarea"
-        contenteditable="true"
-        v-on:keyup="updateText">{{ sticky.text }}</div>
+      <textarea v-model="sticky.text" debounce="100">
+      </textarea>
     </div>
 
     <div class="colors">
@@ -36,6 +34,22 @@
 
 
 <script>
+
+function debounce(func, wait, immediate) {
+	var timeout
+	return function() {
+		var context = this, args = arguments
+		var later = function() {
+			timeout = null
+			if (!immediate) func.apply(context, args)
+		}
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout)
+		timeout = setTimeout(later, wait)
+		if (callNow) func.apply(context, args)
+	}
+}
+
 export default {
   props: ['ref', 'sticky'],
 
@@ -51,6 +65,11 @@ export default {
   watch: {
     'sticky.color'() {
       this.ref.update({color: this.sticky.color})
+    },
+    'sticky.text'() {
+      this.ref.update({
+        text: this.sticky.text
+      })
     }
   },
 
@@ -68,13 +87,6 @@ export default {
   },
 
   methods: {
-
-    // triggered when the sticky text is updated
-    updateText(event) {
-      this.ref.update({
-        text: event.target.textContent
-      })
-    },
 
     // triggered by the [x] in the top right corner
     deleteSticky(e) {
@@ -170,12 +182,16 @@ export default {
   width: 80%;
   height: 100%;
 }
-.sticky .textarea {
+.sticky textarea {
+  outline: none;
+  resize: none;
   text-align: center;
   font-size: 20px;
-  display: table-cell;
-  vertical-align: middle;
-  resize: none;
+  background: none;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 8px;
   font-family: 'Neucha', cursive;
 }
 
