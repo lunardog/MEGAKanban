@@ -11,7 +11,7 @@
 import firebase from 'firebase'
 import config from '../config/config'
 
-import board from './components/Board.vue'
+import Board from './components/Board.vue'
 
 firebase.initializeApp(config.firebase)
 
@@ -19,7 +19,7 @@ let db = new firebase.database()
 
 export default {
 
-  components: { board },
+  components: { Board },
 
   data() {
     let board = encodeURIComponent(this.$route.params.board)
