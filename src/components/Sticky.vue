@@ -71,8 +71,9 @@ export default {
 
     // triggered when the sticky text is updated
     updateText(event) {
-      this.sticky.text = event.target.textContent
-      this.ref.update({text: this.sticky.text})
+      this.ref.update({
+        text: event.target.textContent
+      })
     },
 
     // triggered by the [x] in the top right corner
