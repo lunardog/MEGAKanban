@@ -108,9 +108,8 @@ export default {
 
     // triggered on button up, calls mouseLeave
     mouseUp(e) {
-      if (this.dragging) {
+      if (this.dragging)
         this.mouseLeave(e)
-      }
       e.cancelBubble = true
     },
 

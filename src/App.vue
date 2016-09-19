@@ -44,8 +44,8 @@ export default {
       this.stickiesRef.push({
         text: '',
         position: {
-          left: 0.15 * Math.random(),
-          top: 0.9 * Math.random()
+          left: 0.1 + 0.15 * Math.random(),
+          top: 0.1 + 0.8 * Math.random()
         },
         rotate: 10 * Math.random() - 5,
         color: '#eee'
