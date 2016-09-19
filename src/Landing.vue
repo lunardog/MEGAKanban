@@ -4,7 +4,7 @@
   <div id="form">
     <div class="control">
       <button class="refresh" v-on:click="refreshUrl"></button>
-      <input type="text" v-model="formText">
+      <input type="text" v-model="formText" autofocus="true">
       <button class="check" v-on:click="rootBoard"></button>
     </div>
   </div>
@@ -64,18 +64,21 @@ export default {
 
 #form .control > * {
   float: left;
+  border-radius: 4px;
 }
 
 input {
   font-size: 18px;
   font-weight: 400;
-  color: #444;
+  color: #ccc;
+  background: transparent;
   width: 400px;
   height: 100%;
-  border-radius: 4px;
-  border: solid 2px grey;
+  border: 2px solid #666;
+  box-shadow: 0 0 5px #888;
   padding-right: 10px;
   padding-left: 10px;
+  margin-right: 5px;
   -moz-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -85,7 +88,6 @@ button {
   display: inline-block;
   cursor: pointer;
   border: 4px solid transparent;
-  border-radius: 4px;
   background-repeat: no-repeat;
   background-position: center center;
   margin-top: 2px;
