@@ -27,7 +27,8 @@ export default {
   },
 
   methods: {
-    rootBoard() {
+    rootBoard(e) {
+      e.preventDefault()
       this.$route.router.go(this.formText)
     },
     refreshUrl() {
