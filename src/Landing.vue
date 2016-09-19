@@ -1,13 +1,13 @@
 <template>
 <div id="landing">
   <h1>メガ看板</h1>
-  <div id="form">
+  <form v-on:submit="rootBoard">
     <div class="control">
       <button class="refresh" v-on:click="refreshUrl"></button>
       <input type="text" v-model="formText" autofocus="true">
-      <button class="check" v-on:click="rootBoard"></button>
+      <button class="check" type="submit"></button>
     </div>
-  </div>
+  </form>
 </div>
 
 </template>
@@ -49,7 +49,7 @@ export default {
   right: 0;
 }
 
-#form {
+form {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -58,11 +58,11 @@ export default {
   margin-top: -24px;
 }
 
-#form .control {
+form .control {
   height: 46px;
 }
 
-#form .control > * {
+form .control > * {
   float: left;
   border-radius: 4px;
 }
