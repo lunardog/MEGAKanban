@@ -1,14 +1,10 @@
 <template>
 <div id="landing">
-  <div class="title">
-    メガ看板
-    <div class="underline"></div>
-  </div>
+  <h1>メガ看板</h1>
   <div id="form">
-    <div class="url">megakanban.firebaseapp.com/</div>
     <div class="control">
-      <input type="text" v-model="formText">
       <button class="refresh" v-on:click="refreshUrl"></button>
+      <input type="text" v-model="formText">
       <button class="check" v-on:click="rootBoard"></button>
     </div>
   </div>
@@ -53,63 +49,48 @@ export default {
   right: 0;
 }
 
-.title {
-  margin: 10% auto 0px;
-  font-size: 36px;
-  font-weight: 400;
-  color: #7e7e7e;
-  text-align: center;
-}
-
-.underline {
-  margin: 8px auto;
-  width: 500px;
-  border: solid 1px #777777;
-}
-
 #form {
-  position: relative;
-  margin: 110px auto;
-  width: 395px;
-}
-
-#form .url {
-  width: 96px;
-  height: 14px;
-  font-size: 14px;
-  font-weight: 400;
-  color: #959aa1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 500px;
+  margin-left: -250px;
+  margin-top: -24px;
 }
 
 #form .control {
-  position: relative;
-  margin-top: 7px;
-  width: 395px;
   height: 46px;
 }
 
+#form .control > * {
+  float: left;
+}
+
 input {
-  font-size: 12px;
+  font-size: 18px;
   font-weight: 400;
-  color: #7e7e7e;
-  width: 100%;
+  color: #444;
+  width: 400px;
   height: 100%;
   border-radius: 4px;
   border: solid 2px grey;
-  padding-right: 80px;
-  padding-left: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
   -moz-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 button {
+  display: inline-block;
   cursor: pointer;
-  border: 1px solid transparent;
-  border-radius: 2px;
+  border: 4px solid transparent;
+  border-radius: 4px;
   background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
+  background-position: center center;
+  margin-top: 2px;
+  width: 42px;
+  height: 42px;
 }
 
 button:focus {
@@ -117,19 +98,11 @@ button:focus {
 }
 
 .check {
-  width: 42px;
-  height: 42px;
-  top: 2px;
-  right: 2px;
-  background-color: #82b9de;
+  background-color: #FC7A2B;
   background-image: url(./img/check.svg);
 }
 
 .refresh {
-  width: 42px;
-  height: 42px;
-  top: 2px;
-  right: 42px;
   background-color: transparent;
   background-image: url(./img/refresh.svg);
 }
