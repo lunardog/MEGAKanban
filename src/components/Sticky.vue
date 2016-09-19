@@ -1,57 +1,53 @@
 <template>
-  <div
-      class="sticky"
-      v-bind:class="{ dragging: dragging}"
-      v-bind:style="stickyStyle"
-      v-on:mousedown="mouseDown"
-      v-on:mouseup="mouseUp"
-      v-on:mouseleave="mouseLeave"
-      v-on:mouseleave="mouseUp"
-      v-on:mousemove="mouseMove">
-    <div class="position">
-      <textarea v-model="sticky.text" debounce="100">
+<div class="sticky" v-bind:class="{ dragging: dragging}" v-bind:style="stickyStyle" v-on:mousedown="mouseDown" v-on:mouseup="mouseUp" v-on:mouseleave="mouseLeave" v-on:mouseleave="mouseUp" v-on:mousemove="mouseMove">
+  <div class="position">
+    <textarea v-model="sticky.text" debounce="100">
       </textarea>
-    </div>
+  </div>
 
-    <div class="colors">
-      <label
-        class="color"
-        v-for="color in colors"
-        v-bind:style="{color: color}">
+  <div class="colors">
+    <label class="color" v-for="color in colors" v-bind:style="{color: color}">
         <input
           type="radio"
           name="color"
           v-model="sticky.color"
           :value="color">
       </label>
-    </div>
-
-    <a class="delete-button" v-on:click="deleteSticky" href="#">×</a>
-
   </div>
+
+  <a class="delete-button" v-on:click="deleteSticky" href="#">×</a>
+
+</div>
 
 </template>
 
 
 <script>
-
 export default {
   props: ['ref', 'sticky'],
 
   data() {
     return {
       dragging: false,
-      layerPos: { x: 0, y: 0 },
-      lastPos: { x: 0, y: 0 },
+      layerPos: {
+        x: 0,
+        y: 0
+      },
+      lastPos: {
+        x: 0,
+        y: 0
+      },
       colors: ['#43F2FF', '#C2FF9B', '#65F088', '#FFC073', '#FC7A2B', '#eee']
     }
   },
 
   watch: {
-    'sticky.color'() {
-      this.ref.update({color: this.sticky.color})
+    'sticky.color' () {
+      this.ref.update({
+        color: this.sticky.color
+      })
     },
-    'sticky.text'() {
+    'sticky.text' () {
       this.ref.update({
         text: this.sticky.text
       })
@@ -65,8 +61,8 @@ export default {
       return {
         backgroundColor: this.sticky.color,
         transform: 'rotate(' + (this.sticky.rotate || 0) + 'deg)',
-        left: (100 * this.sticky.position.left||0) + '%',
-        top: (100 * this.sticky.position.top||0) + '%',
+        left: (100 * this.sticky.position.left || 0) + '%',
+        top: (100 * this.sticky.position.top || 0) + '%',
       };
     }
   },
@@ -121,12 +117,13 @@ export default {
   }
 
 }
+
 </script>
 
 
 <style>
 .sticky {
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   border-radius: 3px;
   display: inline-block;
   width: 200px;
@@ -145,28 +142,32 @@ export default {
   display: block;
   width: 100%;
   height: 100%;
-  background: -webkit-linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(rgba(255,255,255,0.3), rgba(0,0,0,0.1)); /* Standard syntax */
+  background: -webkit-linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+  /* Standard syntax */
 }
 
 .sticky.dragging {
-  box-shadow: 6px 6px 20px rgba(0,0,0,0.3);
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.3);
   z-index: 1;
   transition-property: none;
 }
 
-
 .sticky .position {
   position: absolute;
-  display:table;
+  display: table;
   cursor: move;
   left: 0;
   top: 0;
   width: 80%;
   height: 100%;
 }
+
 .sticky textarea {
   outline: none;
   resize: none;
@@ -189,7 +190,7 @@ export default {
   border: none;
   background: none;
   opacity: 0.5;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
   width: 15px;
   height: 15px;
   text-align: center;
@@ -198,8 +199,8 @@ export default {
   transition: opacity 0.5s;
 }
 
-
-.textarea:focus, input:focus{
+.textarea:focus,
+input:focus {
   outline: none;
 }
 
@@ -233,7 +234,7 @@ export default {
   opacity: 1;
 }
 
-.colors .color:hover{
+.colors .color:hover {
   opacity: 1;
 }
 

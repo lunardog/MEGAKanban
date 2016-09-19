@@ -1,8 +1,7 @@
 <template>
-  <sticky
-  v-for="(key, snapshot) in stickies"
-  :ref="snapshot.ref"
-  :sticky="snapshot.val()"></sticky>
+<sticky v-for="(key, snapshot) in stickies" :ref="snapshot.ref" :sticky="snapshot.val()">
+</sticky>
+
 </template>
 
 <script>
@@ -11,7 +10,9 @@ import firebase from 'firebase'
 
 export default {
 
-  components: { sticky },
+  components: {
+    sticky
+  },
 
   props: ['ref'],
 
@@ -30,7 +31,7 @@ export default {
       query.on('value', snapshot => {
         // reset the `stickies` object
         this.stickies = {}
-        // fill with child snapshots
+          // fill with child snapshots
         snapshot.forEach(child => {
           this.stickies[child.key] = child
         })
@@ -38,4 +39,5 @@ export default {
     })
   }
 }
+
 </script>

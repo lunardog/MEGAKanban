@@ -1,10 +1,13 @@
 <template>
-  <div id="app">
-    <section v-for="section in sections"><h2>{{section}}</h2></section>
-    <h1>メガ看板</h1>
-    <board :ref="stickiesRef"></board>
-    <div v-on:click="addSticky" class="bigplus">⊕</div>
-  </div>
+<div id="app">
+  <section v-for="section in sections">
+    <h2>{{section}}</h2>
+  </section>
+  <h1>メガ看板</h1>
+  <board :ref="stickiesRef"></board>
+  <div v-on:click="addSticky" class="bigplus">⊕</div>
+</div>
+
 </template>
 
 <script>
@@ -19,7 +22,9 @@ let db = new firebase.database()
 
 export default {
 
-  components: { Board },
+  components: {
+    Board
+  },
 
   data() {
     let board = encodeURIComponent(this.$route.params.board)
@@ -49,6 +54,7 @@ export default {
 
   }
 }
+
 </script>
 
 <style>
@@ -59,10 +65,14 @@ export default {
   left: 0;
   right: 0;
   background: #333;
-  background: -webkit-linear-gradient(#444, #000); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#444, #000); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#444, #000); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#444, #000); /* Standard syntax */
+  background: -webkit-linear-gradient(#444, #000);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#444, #000);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#444, #000);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#444, #000);
+  /* Standard syntax */
 }
 
 .bigplus {
@@ -115,19 +125,27 @@ section {
   border-left: 3px dotted #666;
   opacity: 0.3;
 }
-section:first-child{
+
+section:first-child {
   border-left: none;
 }
+
 html {
-  height:100%;
+  height: 100%;
 }
+
 body {
   font-family: Helvetica, sans-serif;
-  height:100%;
+  height: 100%;
   background: #333;
-  background: -webkit-linear-gradient(#444, #000); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#444, #000); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#444, #000); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(#444, #000); /* Standard syntax */
+  background: -webkit-linear-gradient(#444, #000);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#444, #000);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#444, #000);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#444, #000);
+  /* Standard syntax */
 }
+
 </style>
