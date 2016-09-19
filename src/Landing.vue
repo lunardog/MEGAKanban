@@ -74,14 +74,17 @@ input {
   background: transparent;
   width: 400px;
   height: 100%;
-  border: 2px solid #666;
-  box-shadow: 0 0 5px #888;
+  border: 2px solid #333;
   padding-right: 10px;
   padding-left: 10px;
   margin-right: 5px;
   -moz-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+input:focus{
+  box-shadow: 0 0 5px #888;
 }
 
 button {
